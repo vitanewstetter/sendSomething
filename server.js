@@ -74,6 +74,10 @@ app.post("/", cors(), function(req, res){
             console.log(image_name);
         db.collection('cards').insert( { _id: image_name, link: newBody.myLink} );
 
+        findDocuments(db, function(docs){
+                console.log(docs);
+                db.close;
+            });
     })
 
 
