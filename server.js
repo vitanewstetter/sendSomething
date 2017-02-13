@@ -78,6 +78,14 @@ app.post("/", cors(), function(req, res){
                 console.log(docs);
                 db.close;
             });
+        fs.writeFile(image_path + image_name + "-front"+'.png', newBody.front, 'base64', function(err){
+                if (err){
+                    console.log(err);
+                }else{
+                    console.log("saved image");
+                    res.send(image_name);
+                }
+            });
     })
 
 
