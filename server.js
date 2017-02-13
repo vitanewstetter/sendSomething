@@ -63,7 +63,11 @@ app.post("/", cors(), function(req, res){
     req.on('data', function(chunk){
             body.push(chunk);
             console.log(chunk);
-        });
+        }).on('end', function(){
+            body = Buffer.concat(body).toString();
+            var base64Data = body.replace(/data:image\/png;base64,/g,"");
+
+        console.log(base64Data);
     // req.on('data', function(chunk){
     //     body.push(chunk);
     // }).on('end', function(){
