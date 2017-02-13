@@ -155,36 +155,38 @@ app.post("/redirect/", function(req, res){
 
 });
 
-app.get("/users/:image_name", function(req, res){
-    var id = req.params.image_name;
-    var image_path = "/images/";
-
-    db.collection('cards').find({_id: id}).toArray(function(err, docs) {
-        assert.equal(err, null);
-        console.log("Found the following records");
-
-        console.log("DOCS:", docs);
-
-        res.render('cardTemplate', {
-            frontImage: image_path + id + "-front.png" ,
-            backImage: image_path +id + "-back.png" ,
-            insideImage: image_path +id + "-inside.png",
-            myLink: docs[0].link
-        });
-
-    });
-
-    //console.log(myLink);
 
 
+// app.get("/users/:image_name", function(req, res){
+//     var id = req.params.image_name;
+//     var image_path = "/images/";
+//
+//     db.collection('cards').find({_id: id}).toArray(function(err, docs) {
+//         assert.equal(err, null);
+//         console.log("Found the following records");
+//
+//         console.log("DOCS:", docs);
+//
+//         res.render('cardTemplate', {
+//             frontImage: image_path + id + "-front.png" ,
+//             backImage: image_path +id + "-back.png" ,
+//             insideImage: image_path +id + "-inside.png",
+//             myLink: docs[0].link
+//         });
+//
+//     });
+//
+//     //console.log(myLink);
+//
+//
+//
+//
+// });
 
-
-});
-
-app.post("/users/:image_name", function(req, res){
-    res.redirect('/');
-    image_name ="";
-});
+// app.post("/users/:image_name", function(req, res){
+//     res.redirect('/');
+//     image_name ="";
+// });
 
 
 app.listen(3000, function(req, res){
