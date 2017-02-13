@@ -103,7 +103,7 @@ app.post("/", cors(), function(req, res){
         //         console.log("saved image");
         //     }
         // })
-    })
+    // })
     res.redirect('/users/'+ image_name);
 
 
