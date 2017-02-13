@@ -102,8 +102,8 @@ app.post("/", cors(), function(req, res){
         })
     })
 
-    res.write(image_name);
-    console.log(res);
+    res.send(image_name);
+
 
 
     // req.on('data', function(chunk){
@@ -153,10 +153,10 @@ app.post("/", cors(), function(req, res){
 
 
 });
-app.post("/redirect/", function(req, res){
-    res.redirect('/users/'+ image_name);
-
-});
+// app.post("/", function(req, res){
+//     res.redirect('/users/'+ image_name);
+//
+// });
 
 
 
