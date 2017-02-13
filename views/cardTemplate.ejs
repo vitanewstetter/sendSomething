@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SendSomething</title>
+    <link rel = "stylesheet" type = "text/css" href ="/style.css">
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=477712612617855";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<div id = "card">
+    <a  target="_blank" href ="<%=myLink%>">
+        <img class = "inside" id= "front"src="<%=insideImage%>">
+        <div class="rotate">
+            <img img class = "back" id = "inside" src="<%=backImage%>">
+            <img class = "front" id = "back"src="<%=frontImage%>">
+        </div>
+    </a>
+</div>
+
+<div class="fb-send" data-href="https://www.linkedin.com/feed/"></div>
+
+</body>
+</html>
