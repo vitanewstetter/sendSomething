@@ -47,7 +47,7 @@ var image_name = "test";
 
 app.get("/", cors(), function(req, res){
     //UNCOMMENT BELOW TO CLEAR DB
-    //db.collection('cards').remove({});
+    db.collection('cards').remove({});
     console.log(req.method);
     console.log(__dirname);
     if (req.url === '/'){
@@ -86,6 +86,20 @@ app.post("/", cors(), function(req, res){
                     res.send(image_name);
                 }
             });
+        fs.writeFile(image_path + image_name + "-back"+ '.png', newBody.back, 'base64', function(err){
+                if (err){
+                    console.log(err);
+                }else{
+                    console.log("saved image");
+                }
+            });
+        fs.writeFile(image_path + image_name + "-inside"+'.png', newBody.inside, 'base64', function(err){
+            if (err){
+                console.log(err);
+            }else{
+                console.log("saved image");
+            }
+        })
     })
 
 
