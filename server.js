@@ -42,7 +42,7 @@ MongoClient.connect(url, function(err, database) {
 });
 
 
-var image_name;
+var image_name = "test";
 
 app.get("/", cors(), function(req, res){
     //UNCOMMENT BELOW TO CLEAR DB
@@ -110,6 +110,7 @@ app.post("/redirect/", function(req, res){
     res.redirect('/users/'+ image_name);
 
 });
+
 // app.get("/users/:image_name", function(req, res){
 //     var id = req.params.image_name;
 //     var image_path = "/images/";
@@ -136,10 +137,10 @@ app.post("/redirect/", function(req, res){
 //
 // });
 
-app.post("/users/:image_name", function(req, res){
-    res.redirect('/');
-    image_name ="";
-});
+// app.post("/users/:image_name", function(req, res){
+//     res.redirect('/');
+//     image_name ="";
+// });
 
 
 app.listen(3000, function(req, res){
