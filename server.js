@@ -57,6 +57,10 @@ app.get("/", cors(), function(req, res){
 });
 app.post("/", cors(), function(req, res){
 
+    image_name = shortid.generate();
+    // res.send(image_name);
+    console.log(image_name);
+    res.redirect('/users/');
     console.log("posted");
 
     var body = [];
@@ -70,9 +74,7 @@ app.post("/", cors(), function(req, res){
         var newBody = JSON.parse(base64Data);
         //console.log(newBody);
         var image_path = __dirname+"/public/images/";
-            image_name = shortid.generate();
-           // res.send(image_name);
-            console.log(image_name);
+
         db.collection('cards').insert( { _id: image_name, link: newBody.myLink} );
 
         findDocuments(db, function(docs){
@@ -102,12 +104,12 @@ app.post("/", cors(), function(req, res){
         })
     })
 
-    res.write(image_name);
-
-    res.writeHead(301,
-        {Location: '/users/' + image_name }
-    );
-    res.end;
+    // res.setHeader(image_name);
+    //
+    // res.write(301,
+    //     {Location: '/users/' + image_name }
+    // );
+    // res.end;
 
    // res.redirect('/users/');
 
