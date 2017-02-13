@@ -56,9 +56,6 @@ app.get("/", cors(), function(req, res){
 
 });
 app.post("/", cors(), function(req, res){
-    image_name = shortid.generate();
-    res.send(image_name);
-    console.log(image_name);
 
     console.log("posted");
 
@@ -73,7 +70,8 @@ app.post("/", cors(), function(req, res){
         var newBody = JSON.parse(base64Data);
         //console.log(newBody);
         var image_path = __dirname+"/public/images/";
-
+            image_name = shortid.generate();
+            console.log(image_name);
         db.collection('cards').insert( { _id: image_name, link: newBody.myLink} );
 
         findDocuments(db, function(docs){
@@ -101,6 +99,7 @@ app.post("/", cors(), function(req, res){
                 console.log("saved image");
             }
         })
+        return res.send(image_name);
     })
 
 
