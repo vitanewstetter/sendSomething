@@ -58,7 +58,7 @@ app.get("/", cors(), function(req, res){
 app.post("/", cors(), function(req, res){
 
     image_name = shortid.generate();
-    // res.send(image_name);
+    res.send(image_name);
     console.log(image_name);
     res.redirect('/users/' + image_name);
     console.log("posted");
@@ -115,11 +115,12 @@ app.post("/", cors(), function(req, res){
 
 
 });
-// app.post("/users/", function(req, res){
-//
-//     res.redirect('/users/'+ image_name);
-//
-// });
+
+app.post("/users/", function(req, res){
+
+    res.redirect('/users/'+ image_name);
+
+});
 
 
 
