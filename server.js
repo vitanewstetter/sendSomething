@@ -57,6 +57,7 @@ app.get("/", cors(), function(req, res){
 app.post("/", cors(), function(req, res){
 
     console.log("posted");
+    db.collection('cards').insert( { _id: image_name, link: "test.com"} );
 
     // var body = [];
     // req.on('data', function(chunk){
