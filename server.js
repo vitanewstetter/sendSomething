@@ -150,12 +150,10 @@ app.post("/", cors(), function(req, res){
 
 
 });
-// app.post("/redirect/", function(req, res){
-//     res.redirect('/users/'+ image_name);
-//
-// });
+app.post("/redirect/", function(req, res){
+    res.redirect('/users/'+ image_name);
 
-
+});
 
 // app.get("/users/:image_name", function(req, res){
 //     var id = req.params.image_name;
