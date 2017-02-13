@@ -179,7 +179,7 @@ app.get("/users/:image_name", function(req, res){
 //
 //
 //
-});
+})
 
 // app.post("/users/:image_name", function(req, res){
 //     res.redirect('/');
