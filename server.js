@@ -128,13 +128,13 @@ app.post("/redirect/", function(req, res){
 //         });
 //
 //     });
-    
-    //console.log(myLink);
-
-
-   
-    
-});
+//
+//     //console.log(myLink);
+//
+//
+//
+//
+// });
 
 app.post("/users/:image_name", function(req, res){
     res.redirect('/');
