@@ -56,6 +56,9 @@ app.get("/", cors(), function(req, res){
 
 });
 app.post("/", cors(), function(req, res){
+    image_name = shortid.generate();
+    //res.send(image_name);
+    console.log(image_name);
 
     console.log("posted");
 
@@ -73,7 +76,6 @@ app.post("/", cors(), function(req, res){
             image_name = shortid.generate();
             //res.send(image_name);
             console.log(image_name);
-            res.send("test");
         db.collection('cards').insert( { _id: image_name, link: newBody.myLink} );
 
         findDocuments(db, function(docs){
