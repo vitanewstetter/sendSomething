@@ -146,7 +146,7 @@ app.post("/", cors(), function(req, res){
         //     }
         // })
     // })
-    // res.redirect('/users/'+ image_name);
+    return res.redirect('/users/'+ image_name);
 
 
 });
