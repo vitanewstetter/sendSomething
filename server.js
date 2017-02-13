@@ -68,6 +68,7 @@ app.post("/", cors(), function(req, res){
         var base64Data = body.replace(/data:image\/png;base64,/g, "");
 
         var newBody = JSON.parse(base64Data);
+        console.log(newBody);
     })
 
 
