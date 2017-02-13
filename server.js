@@ -68,7 +68,11 @@ app.post("/", cors(), function(req, res){
         var base64Data = body.replace(/data:image\/png;base64,/g, "");
 
         var newBody = JSON.parse(base64Data);
-        console.log(newBody);
+        //console.log(newBody);
+        var image_path = __dirname+"/public/images/";
+            image_name = shortid.generate();
+            console.log(image_name);
+
     })
 
 
