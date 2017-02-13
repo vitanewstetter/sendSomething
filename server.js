@@ -171,6 +171,7 @@ app.get("/users/:image_name", function(req, res){
             frontImage: image_path + id + "-front.png" ,
             backImage: image_path +id + "-back.png" ,
             insideImage: image_path +id + "-inside.png",
+            myLink: "test"
             // myLink: docs[0].link
         });
 
@@ -180,10 +181,10 @@ app.get("/users/:image_name", function(req, res){
 
 });
 
-// app.post("/users/:image_name", function(req, res){
-//     res.redirect('/');
-//     image_name ="";
-// });
+app.post("/users/:image_name", function(req, res){
+    res.redirect('/');
+    image_name ="";
+});
 
 
 app.listen(3000, function(req, res){
