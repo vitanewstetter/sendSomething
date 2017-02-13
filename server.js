@@ -61,18 +61,18 @@ app.post("/", cors(), function(req, res){
     var body = [];
 
 
-    req.on('data', function(chunk){
-        body.push(chunk);
-    }).on('end', function(){
-        body = Buffer.concat(body).toString();
-        var base64Data = body.replace(/data:image\/png;base64,/g,"");
-
-        var newBody = JSON.parse(base64Data);
-
-        //console.log(newBody);
-
-        var image_path = __dirname+"/public/images/";
-        image_name = shortid.generate();
+    // req.on('data', function(chunk){
+    //     body.push(chunk);
+    // }).on('end', function(){
+    //     body = Buffer.concat(body).toString();
+    //     var base64Data = body.replace(/data:image\/png;base64,/g,"");
+    //
+    //     var newBody = JSON.parse(base64Data);
+    //
+    //     //console.log(newBody);
+    //
+    //     var image_path = __dirname+"/public/images/";
+    //     image_name = shortid.generate();
         // db.collection('cards').insert( { _id: image_name, link: newBody.myLink} );
         //
         // findDocuments(db, function(docs){
