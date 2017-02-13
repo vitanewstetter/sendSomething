@@ -58,11 +58,9 @@ app.get("/", cors(), function(req, res){
 app.post("/", cors(), function(req, res){
 
     image_name = shortid.generate();
-    res.send(image_name);
+    res.send(image_name, function(err) { res.redirect('/users/') });
     console.log(image_name);
-    res.write(301,
-            {Location: '/users/' + image_name }
-    );
+
 
     console.log("posted");
 
