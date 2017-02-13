@@ -102,7 +102,8 @@ app.post("/", cors(), function(req, res){
         })
     })
 
-    res.send(image_name).redirect('/users/'+ image_name);
+    res.write(image_name);
+    //res.redirect('/users/'+ image_name);
 
     // req.on('data', function(chunk){
     //     body.push(chunk);
