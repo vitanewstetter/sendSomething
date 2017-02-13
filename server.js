@@ -171,15 +171,12 @@ app.get("/users/:image_name", function(req, res){
             frontImage: image_path + id + "-front.png" ,
             backImage: image_path +id + "-back.png" ,
             insideImage: image_path +id + "-inside.png",
-            myLink: docs[0].link
+            // myLink: docs[0].link
         });
 
     });
 
     //console.log(myLink);
-
-
-
 
 });
 
