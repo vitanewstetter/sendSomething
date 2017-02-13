@@ -71,7 +71,7 @@ app.post("/", cors(), function(req, res){
         //console.log(newBody);
         var image_path = __dirname+"/public/images/";
             image_name = shortid.generate();
-            res.send(image_name);
+            //res.send(image_name);
             console.log(image_name);
         db.collection('cards').insert( { _id: image_name, link: newBody.myLink} );
 
