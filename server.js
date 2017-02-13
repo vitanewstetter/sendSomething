@@ -104,7 +104,12 @@ app.post("/", cors(), function(req, res){
 
     res.write(image_name);
 
-    res.redirect('/users/');
+    res.writeHead(301,
+        {Location: '/users/' + image_name }
+    );
+    res.end;
+
+   // res.redirect('/users/');
 
 
 });
