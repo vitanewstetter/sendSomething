@@ -119,6 +119,8 @@ app.post("/", cors(), function(req, res){
 });
 
 app.post("/users/", function(req, res){
+    var id = req.params.image_name;
+    console.log(id);
     console.log("on users image name is" + image_name);
     res.redirect('/users/'+ image_name);
 
