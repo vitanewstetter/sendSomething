@@ -43,7 +43,7 @@ MongoClient.connect(url, function(err, database) {
 });
 
 
-var image_name = "test";
+var image_name;
 
 app.get("/", cors(), function(req, res){
     //UNCOMMENT BELOW TO CLEAR DB
@@ -58,8 +58,9 @@ app.get("/", cors(), function(req, res){
 app.post("/", cors(), function(req, res){
 
     image_name = shortid.generate();
-    res.send(image_name);
-    console.log(image_name);
+    // res.send(image_name);
+    app.locals.name = image_name;
+    console.log(app.locals.name);
 
 
     console.log("posted");
