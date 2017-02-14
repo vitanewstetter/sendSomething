@@ -120,15 +120,16 @@ app.post("/", cors(), function(req, res){
 });
 
 app.post("/users/", function(req, res){
-    console.log("on users image name is" + app.locals.name);
-    res.redirect('/users/'+ app.locals.name);
+
+    console.log("on users image name is " + app.locals.name);
+    res.redirect('/users/'+ image_name);
 
 });
 
 
 
 app.get("/users/:image_name", function(req, res){
-    var id = req.params.app.locals.name;
+    var id = req.params.image_name;
     var image_path = "/images/";
 
     db.collection('cards').find({_id: id}).toArray(function(err, docs) {
