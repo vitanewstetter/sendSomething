@@ -105,7 +105,7 @@ app.post("/", cors(), function(req, res){
         })
 
     })
-    res.redirect('/users/');
+    //res.redirect('/users/');
     // res.setHeader(image_name);
     //
     // res.write(301,
