@@ -53,13 +53,12 @@ app.get("/", cors(), function(req, res){
     if (req.url === '/'){
         res.render('index');
     }
-    console.log(image_name);
 });
 app.post("/", cors(), function(req, res){
 
     image_name = shortid.generate();
     res.send(image_name);
-    console.log(app.locals.name);
+    req.body.image_name = image_name;
 
 
     console.log("posted");
@@ -118,8 +117,9 @@ app.post("/", cors(), function(req, res){
 
 });
 
-app.post("/users/", function(req, res){
+app.post("/redirect/", function(req, res){
     console.log(req.params.image_name);
+    console.log(req.body.image_name);
     console.log(image_name);
     res.redirect('/users/'+ image_name);
 
