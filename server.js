@@ -57,8 +57,8 @@ app.get("/", cors(), function(req, res){
 app.post("/", cors(), function(req, res){
 
     image_name = shortid.generate();
-    res.send(image_name);
-    req.body.image_name = image_name;
+    //res.send(image_name);
+    //req.body.image_name = image_name;
 
 
     console.log("posted");
@@ -113,13 +113,11 @@ app.post("/", cors(), function(req, res){
     // res.end;
 
    // res.redirect('/users/');
-
+    res.send(image_name);
 
 });
 
 app.post("/redirect/", function(req, res){
-    console.log("post" + req.params.image_name);
-    console.log("post" + req.body.image_name);
     console.log("post" + image_name);
     res.redirect('/users/'+ image_name);
 
@@ -129,7 +127,6 @@ app.post("/redirect/", function(req, res){
 
 app.get("/users/:image_name", function(req, res){
     var id = req.params.image_name;
-    console.log("get" + req.body.image_name);
     var image_path = "/images/";
 
     db.collection('cards').find({_id: id}).toArray(function(err, docs) {
