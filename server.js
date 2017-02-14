@@ -121,7 +121,8 @@ app.post("/", cors(), function(req, res){
 
 app.post("/users/", function(req, res){
 
-    console.log("on users image name is " + app.locals.name);
+    console.log("on users image name is " + req.app.locals.name);
+    console.log("on users image name is " + res.app.locals.name);
     res.redirect('/users/'+ image_name);
 
 });
