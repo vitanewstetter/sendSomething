@@ -58,7 +58,7 @@ app.get("/", cors(), function(req, res){
 app.post("/", cors(), function(req, res){
 
     image_name = shortid.generate();
-    res.send(image_name, function(err) { res.redirect('/users/') });
+    res.send(image_name);
     console.log(image_name);
 
 
@@ -103,8 +103,9 @@ app.post("/", cors(), function(req, res){
                 console.log("saved image");
             }
         })
-    })
 
+    })
+    res.redirect('/users/');
     // res.setHeader(image_name);
     //
     // res.write(301,
@@ -118,7 +119,7 @@ app.post("/", cors(), function(req, res){
 });
 
 app.post("/users/", function(req, res){
-
+    console.log("on users image name is" + image_name);
     res.redirect('/users/'+ image_name);
 
 });
