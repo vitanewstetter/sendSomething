@@ -9,7 +9,7 @@ var express = require("express"),
     cors = require("cors"),
     shortid = require('shortid');
 
-var url = 'mongodb://45.55.214.123:27017';
+var url = 'mongodb://127.0.0.1:27017';
 var db;
 
 
