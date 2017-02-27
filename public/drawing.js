@@ -128,9 +128,10 @@ $(done).hover(function(){
          contentType: 'text/json',
          url: '/',
          success: function(data) {
-         var user_id = data;
-         console.log('success');
-         console.log(user_id)
+            var user_id = data;
+            console.log('success');
+            console.log(user_id);
+            window.location.href = "/users/" + user_id;
          }
      });
  }
