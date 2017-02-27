@@ -1,4 +1,3 @@
-#!/usr/bin/env nodejs
 
 var express = require("express"),
     fs = require("fs"),
@@ -8,6 +7,8 @@ var express = require("express"),
     assert = require('assert'),
     cors = require("cors"),
     shortid = require('shortid');
+
+require('dotenv').config({silent: true});
 
 var url = 'mongodb://127.0.0.1:27017';
 var db;
@@ -27,7 +28,7 @@ var findDocuments = function(db, callback) {
     collection.find({}).toArray(function(err, docs) {
         assert.equal(err, null);
         console.log("Found the following records");
-        console.log(docs);
+        console.log(docs)
         callback(docs);
     });
 };
@@ -47,54 +48,54 @@ var image_name;
 
 app.get("/", cors(), function(req, res){
     //UNCOMMENT BELOW TO CLEAR DB
-    db.collection('cards').remove({});
+    //db.collection('cards').remove({});
     console.log(req.method);
     console.log(__dirname);
     if (req.url === '/'){
         res.render('index');
     }
+
 });
 app.post("/", cors(), function(req, res){
-
-    image_name = shortid.generate();
-    //res.send(image_name);
-    //req.body.image_name = image_name;
-
 
     console.log("posted");
 
     var body = [];
-
     req.on('data', function(chunk){
-            body.push(chunk);
-        }).on('end', function() {
+        body.push(chunk);
+    }).on('end', function(){
         body = Buffer.concat(body).toString();
-        var base64Data = body.replace(/data:image\/png;base64,/g, "");
+        var base64Data = body.replace(/data:image\/png;base64,/g,"");
 
         var newBody = JSON.parse(base64Data);
-        //console.log(newBody);
-        var image_path = __dirname+"/public/images/";
 
+        //console.log(newBody);
+
+        var image_path = __dirname+"/public/images/";
+        image_name = shortid.generate();
         db.collection('cards').insert( { _id: image_name, link: newBody.myLink} );
 
         findDocuments(db, function(docs){
-                console.log(docs);
-                db.close;
-            });
+            console.log(docs);
+            db.close;
+        });
+
+
         fs.writeFile(image_path + image_name + "-front"+'.png', newBody.front, 'base64', function(err){
-                if (err){
-                    console.log(err);
-                }else{
-                    console.log("saved image");
-                }
-            });
+            if (err){
+                console.log(err);
+            }else{
+                console.log("saved image");
+                res.send(image_name);
+            }
+        });
         fs.writeFile(image_path + image_name + "-back"+ '.png', newBody.back, 'base64', function(err){
-                if (err){
-                    console.log(err);
-                }else{
-                    console.log("saved image");
-                }
-            });
+            if (err){
+                console.log(err);
+            }else{
+                console.log("saved image");
+            }
+        });
         fs.writeFile(image_path + image_name + "-inside"+'.png', newBody.inside, 'base64', function(err){
             if (err){
                 console.log(err);
@@ -102,29 +103,15 @@ app.post("/", cors(), function(req, res){
                 console.log("saved image");
             }
         })
+    });
+    //res.redirect('/users/'+ image_name);
 
-    })
-    //res.redirect('/users/');
-    // res.setHeader(image_name);
-    //
-    // res.write(301,
-    //     {Location: '/users/' + image_name }
-    // );
-    // res.end;
-
-   // res.redirect('/users/');
-    res.send(image_name);
 
 });
-
 app.post("/redirect/", function(req, res){
-    console.log("post" + image_name);
     res.redirect('/users/'+ image_name);
 
 });
-
-
-
 app.get("/users/:image_name", function(req, res){
     var id = req.params.image_name;
     var image_path = "/images/";
@@ -139,14 +126,15 @@ app.get("/users/:image_name", function(req, res){
             frontImage: image_path + id + "-front.png" ,
             backImage: image_path +id + "-back.png" ,
             insideImage: image_path +id + "-inside.png",
-            myLink: "test",
-            userID: id
-            // myLink: docs[0].link
+            myLink: docs[0].link
         });
 
     });
 
     //console.log(myLink);
+
+
+
 
 });
 
