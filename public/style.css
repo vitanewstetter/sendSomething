@@ -395,4 +395,17 @@ p{
 
     }
 
+    #card{
+        transform: scale(0.5) !important;
+        padding-top: 20%;
+    }
+    .rotate{
+        transform: perspective(1600px) translate(-50%);
+    }
+    body:hover #card {
+        /*    animation: moveCard 5s ease 1 forwards;*/
+        transform: scale(0.5) translate(175px, 0px) !important;
+        padding-top: 20%;
+    }
+
 }
